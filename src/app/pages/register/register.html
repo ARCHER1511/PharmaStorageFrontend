@@ -1,1 +1,274 @@
-<p>register works!</p>
+<div class="register-page">
+
+    <!-- Left Side -->
+    <aside class="sidebar">
+
+        <div class="logo-section">
+            <div class="logo-icon">
+                📄
+            </div>
+
+            <h2>مخزن الشبراوي</h2>
+        </div>
+
+        <hr>
+
+        <div class="sidebar-content">
+
+            <h3>
+                نظام متكامل لإدارة مخزونك وسلسلة التوريد
+            </h3>
+
+            <ul>
+                <li>متابعة دقيقة لأرصدة البضائع المخزنة على مدار الساعة</li>
+                <li>جدولة ذكية لمواعيد الزيارات والتسليم بمختلف الأسواق</li>
+                <li>منظومة أمان عالية مع توثيق رسمي للشركات المعتمدة</li>
+            </ul>
+
+            <img
+                src="assets/images/warehouse.png"
+                alt="Warehouse">
+
+        </div>
+
+    </aside>
+
+    <section class="register-card">
+
+        <div class="register-header">
+
+            <h1>إنشاء حساب شريك جديد</h1>
+
+            <p>
+                يرجى إدخال البيانات المطلوبة لتوثيق شركتك وتفعيل حسابك
+            </p>
+
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-group">
+
+            <label>
+                الاسم بالكامل *
+            </label>
+
+            <input
+                type="text"
+                name="fullName"
+                [(ngModel)]="registerData.fullName"
+                placeholder="ادخل اسمك كما هو في البطاقة الشخصية">
+
+        </div>
+
+        <!-- Phone & Job -->
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+                    رقم الموبايل *
+                </label>
+
+                <input
+                    type="text"
+                    name="phoneNumber"
+                    [(ngModel)]="registerData.phoneNumber"
+                    placeholder="01xxxxxxxxx">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    الوظيفة *
+                </label>
+
+                <input
+                    type="text"
+                    name="jobTitle"
+                    [(ngModel)]="registerData.jobTitle"
+                    placeholder="مثال: مسؤول مبيعات، صاحب الشركة">
+
+            </div>
+
+        </div>
+
+        <!-- Email & National ID -->
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+                    البريد الإلكتروني *
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    [(ngModel)]="registerData.email"
+                    placeholder="example@email.com">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    الرقم القومي *
+                </label>
+
+                <input
+                    type="text"
+                    name="nationalIdNumber"
+                    [(ngModel)]="registerData.nationalIdNumber"
+                    placeholder="14 رقم">
+
+            </div>
+
+        </div>
+
+        <!-- Passwords -->
+        <div class="form-row">
+
+            <div class="form-group">
+
+                <label>
+                    كلمة المرور *
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    [(ngModel)]="registerData.password">
+
+            </div>
+
+            <div class="form-group">
+
+                <label>
+                    تأكيد كلمة المرور *
+                </label>
+
+                <input
+                    type="password"
+                    name="confirmPassword"
+                    [(ngModel)]="registerData.confirmPassword">
+
+            </div>
+
+        </div>
+
+        <!-- Company Name -->
+        <div class="form-group">
+
+            <label>
+                اسم الشركة المتعاقدة
+            </label>
+
+            <input
+                type="text"
+                name="contractedCompanyName"
+                [(ngModel)]="registerData.contractedCompanyName"
+                placeholder="اسم الشركة">
+
+        </div>
+
+        <!-- Upload Section -->
+
+        <div class="upload-section">
+
+            <!-- Front National ID -->
+            <div class="upload-card">
+
+                <label>
+                    صورة البطاقة (وجه)
+                </label>
+
+                <input
+                    type="file"
+                    accept="image/*"
+                    (change)="onFrontImageSelected($event)">
+
+                <small *ngIf="registerData.nationalIdFrontImage">
+                    {{ registerData.nationalIdFrontImage.name }}
+                </small>
+
+            </div>
+
+            <!-- Back National ID -->
+
+            <div class="upload-card">
+
+                <label>
+                    صورة البطاقة (ظهر)
+                </label>
+
+                <input
+                    type="file"
+                    accept="image/*"
+                    (change)="onBackImageSelected($event)">
+
+                <small *ngIf="registerData.nationalIdBackImage">
+                    {{ registerData.nationalIdBackImage.name }}
+                </small>
+
+            </div>
+
+        </div>
+
+        <!-- Authorization Letter -->
+
+        <div class="upload-card full-upload">
+
+            <label>
+                صورة تفويض ممثل الشركة
+            </label>
+
+            <input
+                type="file"
+                (change)="onAuthorizationSelected($event)">
+
+            <small *ngIf="registerData.authorizationLetterFile">
+                {{ registerData.authorizationLetterFile.name }}
+            </small>
+
+        </div>
+
+        <div class="authorization-notes">
+
+            <strong>
+                شروط وتفاصيل التفويض المقبول:
+            </strong>
+
+            <ul>
+
+                <li>
+                    يجب أن يكون مختوماً بختم الشركة.
+                </li>
+
+                <li>
+                    موجهاً بصفة رسمية لصالح مخزن الشبراوي.
+                </li>
+
+                <li>
+                    موضحاً فيه اسم الشركة التجاري الرسمي.
+                </li>
+
+            </ul>
+
+        </div>
+
+        <!-- Submit -->
+
+        <button
+            type="button"
+            class="register-btn"
+            [disabled]="isLoading"
+            (click)="register()">
+
+            {{ isLoading ? 'جاري إنشاء الحساب...' : 'إنشاء حساب جديد' }}
+
+        </button>
+
+    </section>
+
+</div>
