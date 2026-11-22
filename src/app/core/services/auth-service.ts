@@ -7,7 +7,7 @@ import { AUTH_ENDPOINTS } from '../constants/AUTH_ENDPOINTS';
 @Injectable({
   providedIn: 'root',
 })
-export class AUTHService {
+export class AuthService {
   constructor(private http: HttpClient) {}
 
   login(data: any): Observable<any> {

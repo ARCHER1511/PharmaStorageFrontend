@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import {AbstractControl,FormBuilder,FormGroup,ReactiveFormsModule,ValidationErrors,ValidatorFn,Validators} from '@angular/forms'
+import {AuthService} from '../../core/services/auth-service';
 @Component({
   selector: 'app-sign-up-page',
   imports: [],
